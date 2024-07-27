@@ -2,6 +2,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import streamlit as st
+import os
 
 st.title('Apple Quality Prediction')
 
@@ -33,13 +34,13 @@ def user_input_features():
 input_df = user_input_features()
 
 if input_df is not None:
-    with open(r'E:\BOOKS\Bs Eco\Applied Machine Learning\Machine Learning\Deployment_models\Apple Quality\std_scaler.pkl', 'rb') as f:
+    with open(os.path.join(os.path.dirname(__file__), 'std_scaler.pkl'), 'rb') as f:
         std_scaler = pickle.load(f)
-    with open(r'E:\BOOKS\Bs Eco\Applied Machine Learning\Machine Learning\Deployment_models\Apple Quality\knn_model.pkl', 'rb') as f:
+    with open(os.path.join(os.path.dirname(__file__), 'knn_model.pkl'), 'rb') as f:
         knn = pickle.load(f)
-    with open(r'E:\BOOKS\Bs Eco\Applied Machine Learning\Machine Learning\Deployment_models\Apple Quality\dt_model.pkl', 'rb') as f:
+    with open(os.path.join(os.path.dirname(__file__), 'dt_model.pkl'), 'rb') as f:
         dt = pickle.load(f)
-    with open(r'E:\BOOKS\Bs Eco\Applied Machine Learning\Machine Learning\Deployment_models\Apple Quality\rf_model.pkl', 'rb') as f:
+    with open(os.path.join(os.path.dirname(__file__), 'rf_model.pkl'), 'rb') as f:
         rf = pickle.load(f)
 
     input_scaled = std_scaler.transform(input_df)
